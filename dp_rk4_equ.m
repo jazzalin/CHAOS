@@ -1,7 +1,7 @@
 % James Azzalini - Simplifying DP motion equations for RK4
 
 %Variables and parameters
-syms ax1 ax2 ay1 ay2 g th1 th2 w1 w2 dw1 dw2 L1 L2 m1 m2 anga1 anga2
+syms ax1 ax2 ay1 ay2 g th1 th2 w1 w2 dw1 dw2 L1 L2 m1 m2
 
 %Acceleration of members L1 and L2
 ax1 = -w1^2*L1*sin(th1)+dw1*L1*cos(th1);
