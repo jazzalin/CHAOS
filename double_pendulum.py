@@ -3,6 +3,7 @@
 --------------------------------------------------------------------"""
 import numpy as np
 from numpy import sin, cos, pi
+from plotly_handler import PlotlyHandler
 
 
 def rk4(state):
@@ -83,13 +84,15 @@ if __name__ == '__main__':
         omega1: angular velocity of member 1
         omega2: angular velocity of member 2 """
 
-    # Output file
-    fid = open("dp_data.dat", "wb")
+    # Data file output
+    # fid = open("dp_data.dat", "wb")
+    # Plotly streams output
+    H = PlotlyHandler()
 
     len1 = 0.7
     len2 = 0.45
     mass1 = 1.5
-    mass2 = 1
+    mass2 = 1.0
     g = 9.81
     rad = pi / 180
     N = 1000
@@ -101,8 +104,8 @@ if __name__ == '__main__':
     omega2 = np.zeros(N, dtype=float)
     theta1[0] = 3.0
     theta2[0] = 0
-    # omega1[0] = 0
-    omega2[0] = 4.1
+    omega1[0] = 0.0
+    omega2[0] = 4.0
     statei = np.zeros(numeq, dtype=float)
     stateo = np.zeros(numeq, dtype=float)
     # new_state = state
@@ -128,8 +131,19 @@ if __name__ == '__main__':
         theta2[i] = stateo[2]
         omega2[i] = stateo[3]
 
-    # Write to output file
-    thetas = np.array([t, theta1, theta2])
-    thetas = thetas.T
-    np.savetxt(fid, thetas)
-    fid.close()
+    # Generating x-y coordinates for member 1 and member 2
+    x1 = len1 * sin(theta1)
+    y1 = -len1 * cos(theta1)
+    x2 = len2 * sin(theta2) + x1
+    y2 = -len2 * cos(theta2) + y1
+
+    # Data for plot streams
+    data = zip(x1, y1, x2, y2)
+    # Write to Plotly streams
+    H.send_plotly(data)
+
+    # # Write to output file
+    # thetas = np.array([t, theta1, theta2])
+    # thetas = thetas.T
+    # np.savetxt(fid, thetas)
+    # fid.close()
