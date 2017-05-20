@@ -85,33 +85,34 @@ if __name__ == '__main__':
         omega2: angular velocity of member 2 """
 
     # Data file output
-    # fid = open("dp_data.dat", "wb")
+    fid = open("dp_data.dat", "wb")
     # Plotly streams output
     H = PlotlyHandler()
 
+    # Hardcoded I.C. for now
     len1 = 0.7
     len2 = 0.45
     mass1 = 1.5
     mass2 = 1.0
     g = 9.81
     rad = pi / 180
-    N = 1000
+    N = 10000
     numeq = 4
 
     theta1 = np.zeros(N, dtype=float)
     theta2 = np.zeros(N, dtype=float)
     omega1 = np.zeros(N, dtype=float)
     omega2 = np.zeros(N, dtype=float)
-    theta1[0] = 3.0
-    theta2[0] = 0
+    theta1[0] = 120 * rad
+    theta2[0] = 0.0
     omega1[0] = 0.0
-    omega2[0] = 4.0
+    omega2[0] = 0.0
     statei = np.zeros(numeq, dtype=float)
     stateo = np.zeros(numeq, dtype=float)
     # new_state = state
 
     tmin = 0
-    tmax = 100
+    tmax = 1000
     t = np.zeros(N, dtype=float)  # time values
     h = (tmax - tmin) / N
     for i in range(0, N):
@@ -142,8 +143,8 @@ if __name__ == '__main__':
     # Write to Plotly streams
     H.send_plotly(data)
 
-    # # Write to output file
-    # thetas = np.array([t, theta1, theta2])
-    # thetas = thetas.T
-    # np.savetxt(fid, thetas)
-    # fid.close()
+    # Write to output file
+    thetas = np.array([t, theta1, theta2])
+    thetas = thetas.T
+    np.savetxt(fid, thetas)
+    fid.close()
