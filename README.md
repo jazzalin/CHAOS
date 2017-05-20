@@ -1,7 +1,19 @@
-# CHAOS
+Chaos and the double pendulum
+=============================
 
-###Overview
-######Long term project about the fascinating CHAOS theory. Starting with an essay written in high school about the double pendulum's sensitivity to initial conditions, the project now showcases the chaotic motion of the pendulum through a numerical simulation. The 4th order Runge-Kutta method was used for the calculations and the python library Plotly was used to generate the streaming plots of the double pendulum in action.
-###Motivation
-######Chaos theory really piqued my interest as it challenges our way of viewing and thinking about reality, especially the countless dynamical systems that surround us every day.
+Overview
+--------
+
+* Long term project combining mathematical exploration and numerical analysis
+* Started as a high school project about the double pendulum's sensitivity to initial conditions
+* A numerical simulation has since been implemented to showcase the double pendulum's chaotic behaviour
+* The project served as a basis for exploration of numerical methods, in particular, the 4th order Runge-Kutta method
+* The design of a physical double pendulum awaits laser cutting
+
+Motivation
+-----------
+
+The dynamics of the double pendulum are well suited for an analysis from first principles. The physics can easily be derived on paper, until the resulting differential equations, being too complex to be solved by hand, call for the use of numerical solvers. While symbolic mathematical computation packages can be used to solve the system of differential equations, the problem lends itself to an exploration of numerical analysis with the Runge-Kutta methods.
+
+Finally, I believe that the motion of the double pendulum makes for a great conversation starter (I mean it). Whether numerically simulated or physically showcased, the motion of the double pendulum simply intrigues.  
 
