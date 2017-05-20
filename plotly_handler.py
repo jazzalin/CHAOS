@@ -19,6 +19,7 @@ class PlotlyHandler:
             x=[],
             y=[],
             mode='lines+markers',
+            name='Pendulum arms',
             marker=Marker(size=12),
             stream=Stream(token=self._stream_ids[0])
         )
@@ -28,7 +29,8 @@ class PlotlyHandler:
             x=[],
             y=[],
             mode='lines',
-            line=Line(color='rgba(31,119,180,0.15)'),
+            name='Trace of second pendulum',
+            line=Line(color='rgba(255,0,0,0.30)'),
             stream=Stream(
                 token=self._stream_ids[1],
                 maxpoints=100
@@ -46,7 +48,7 @@ class PlotlyHandler:
 
         # Plotly layout and labels
         self._layout = Layout(
-            title='Double Pendulum',
+            title='Double Pendulum: chaotic motion',
             xaxis=XAxis(
                 axis_style,
                 range=[-2, 2]
@@ -66,14 +68,11 @@ class PlotlyHandler:
         # Streams (of data)
         self._s1 = py.Stream(self._stream_ids[0])
         self._s2 = py.Stream(self._stream_ids[1])
-        # self._s1.open()
-        # self._s2.open()
+        self._s1.open()
+        self._s2.open()
 
     def send_plotly(self, data):
         """ Feed data to Plotly streams (closes streams when done) """
-        # Opening streams
-        self._s1.open()
-        self._s2.open()
 
         for x1, y1, x2, y2 in data:
             self._s1.write(dict(x=[0, x1, x2], y=[0, y1, y2]))
