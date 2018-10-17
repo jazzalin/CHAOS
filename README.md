@@ -1,6 +1,12 @@
 Dynamical systems
 =============================
 
+Compass gait walker
+-----------
+
+Investigation of passive dynamics through the construction and simulation of a compass-like biped (passive) robot.
+
+
 Chaos and the double pendulum
 -----------
 
@@ -12,5 +18,11 @@ Double pendulum in action
 
 Still of the double pendulum simulation
 
-![dp_still](/dp_still.png?raw=true "chaotic heart")  
+![dp_still](/dp_still.png?raw=true "chaotic heart")
+
+
+Inverted pendulum
+-----------
+
+
 
