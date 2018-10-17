@@ -18,7 +18,7 @@ Double pendulum in action
 
 Still of the double pendulum simulation
 
-![dp_still](/dp_still.png?raw=true "chaotic heart")
+![dp_still](/img/dp_still.png?raw=true "chaotic heart")
 
 
 Inverted pendulum
