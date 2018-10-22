@@ -3,7 +3,12 @@
 --------------------------------------------------------------------"""
 import numpy as np
 from numpy import sin, cos, pi
-from plotly_handler import PlotlyHandler
+import matplotlib.pyplot as plt
+
+OFFLINE = True
+
+if not OFFLINE:
+    from plotly_handler import PlotlyHandler
 
 
 def rk4(state):
@@ -87,7 +92,8 @@ if __name__ == '__main__':
     # Data file output
     fid = open("dp_data.dat", "wb")
     # Plotly streams output
-    H = PlotlyHandler()
+    if not OFFLINE:
+        H = PlotlyHandler()
 
     # Hardcoded I.C. for now
     len1 = 0.7
@@ -106,6 +112,7 @@ if __name__ == '__main__':
     theta1[0] = 120 * rad
     theta2[0] = 0.0
     omega1[0] = 0.0
+    # 4.0001
     omega2[0] = 0.0
     statei = np.zeros(numeq, dtype=float)
     stateo = np.zeros(numeq, dtype=float)
@@ -138,13 +145,22 @@ if __name__ == '__main__':
     x2 = len2 * sin(theta2) + x1
     y2 = -len2 * cos(theta2) + y1
 
-    # Data for plot streams
-    data = zip(x1, y1, x2, y2)
-    # Write to Plotly streams
-    H.send_plotly(data)
+    if not OFFLINE:
+        # Data for plot streams
+        data = zip(x1, y1, x2, y2)
+        # Write to Plotly streams
+        H.send_plotly(data)
 
     # Write to output file
     thetas = np.array([t, theta1, theta2])
     thetas = thetas.T
     np.savetxt(fid, thetas)
     fid.close()
+
+    if OFFLINE:
+        limit = 1000
+        plt.plot(t[:limit], theta1[:limit], theta2[:limit])
+        plt.xlabel("t")
+        plt.ylabel("theta")
+        plt.title("Angle of pendulum arms over time")
+        plt.show()
