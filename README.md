@@ -6,6 +6,10 @@ Compass gait walker
 
 Investigation of passive dynamics through the construction and simulation of a compass-like biped (passive) robot.
 
+First steps on a smooth incline
+
+![comp_walk](/img/compass_walk.gif?raw=true "walking = controlled falling")
+
 
 Chaos and the double pendulum
 -----------
