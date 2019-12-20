@@ -162,8 +162,8 @@ In the simulink diagram, which will be similar to the one shown below, double-cl
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{img/simulink.png}
-\caption{An example of balance control system for the rotary double pendulum}
+\includegraphics[width=\linewidth]{img/q8_usb.PNG}
+\caption{The DAQ specified in the hardware interface needs to match the hardware}
 \label{fig:simulink}
 \end{figure}
 
@@ -174,6 +174,13 @@ The following steps describe how to run a Simulink file:
     \item Connect to Target (the icon that looks like two circles with triangles point to each other in them). If this fails, check over the target in the configuration parameters (check under Tools or QUARC)
     \item Run (make sure the duration is not \textbf{inf} in the Simulink window if you don’t want it to run indefinitely)
 \end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{img/simulink.png}
+\caption{An example of balance control system for the rotary double pendulum}
+\label{fig:simulink}
+\end{figure}
 
 Make sure to catch the pendulum before hitting the stop button, as it might hit the station otherwise and potentially damage the sensors.
 
